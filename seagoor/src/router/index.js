@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+//import HelloWorld from '@/components/HelloWorld'
 
 import Home from "../components/home";//home 页
 import Range from "../components/range";// 分类页
@@ -53,3 +53,4 @@ const router =  new Router({
     }
   ]
 })
+export default router;

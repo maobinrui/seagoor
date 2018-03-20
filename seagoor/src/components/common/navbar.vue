@@ -1,9 +1,7 @@
 <template>
   <div>
       <header>
-        <span></span>
-        <p>西狗全球购</p>
-        <span></span>
+
       </header>
   </div>
 </template>
@@ -11,13 +9,15 @@
 <script>
 import axios from "axios"
 export default {
+    name:'navbar',
 
-  data () {
-    return {
+    data(){
+      return {
 
+      }
     }
   }
-}
+</script>
 </script>
 
 <style lang="scss" scoped>
