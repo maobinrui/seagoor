@@ -1,113 +1,98 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+  <div >
+    <header class="fixed">
+          <div class="div_search ">请输入相关产品或店铺搜索</div>
+          <ul >
+          <router-link to="/range/range1" tag="li" activeClass="current1">分类</router-link>
+          <router-link to="/range/range2" tag="li" activeClass="current2">品牌</router-link>
+          </ul>
+
+    </header>
+
+    <router-view></router-view>
   </div>
+
 </template>
 
 <script>
-export default {
-  name: 'HelloWorld',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
-}
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
+<style lang="scss" scoped>
+.fixed{
+  position: fixed;
+  width: 100%;
+  background:#fff;
+  z-index:100;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+
+.current1 {
+    background: url(/img/classify/line.png) right 24px bottom no-repeat;
+    background-size: 40px 1px;
+    color: #000!important;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
+.current2 {
+    background: url(/img/classify/line.png) left 24px bottom no-repeat;
+    background-size: 40px 1px;
+    color: #000!important;
 }
-a {
-  color: #42b983;
+  .div_search {
+    margin: 10px;
+    background-color: #e9ebed;
+    width:100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 13px;
+    color: #999;
+    border-radius: 5px;
+
+    &:before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      height: 100%;
+      width: 20px;
+      margin-left: -100px;
+      background: url(/img/search.png) left no-repeat;
+      background-size: 11px;
+  }
 }
+
+  ul{
+    display: flex;
+    top: 50px;
+    width: 100%;
+    height: 44px;
+    border-bottom: 1px solid #e8e8e8;
+    border-top: 1px solid #ccc;
+    font-size: 15px;
+    background: #fff;
+    li{
+      list-style:none;
+      flex:1;
+      line-height: 44px;
+      color: #999;
+      &:nth-child(1){
+        text-align: right;
+        padding-right: 30px;
+
+      }
+      &:nth-child(2){
+        padding-left: 30px;
+        text-align: left;
+      }
+    }
+  }
+/*   .current {
+    background: url(/img/line.png) right 24px bottom no-repeat;
+    background-size: 40px 1px;
+    color: #000!important;
+  } */
+/*   .active{
+    border-bottom:5px solid red;
+  }
+ */
 </style>
