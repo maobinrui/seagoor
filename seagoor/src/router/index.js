@@ -11,11 +11,6 @@ import Login from "../components/login";//登录
 
 import Register from "../components/register";//注册
 
-
-
-
-
-import Register from "../components/register";
 import Range1 from "../components/range1";
 import Range2 from "../components/range2";
 
