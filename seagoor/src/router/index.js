@@ -1,4 +1,5 @@
 
+
 import Vue from 'vue'
 import Router from 'vue-router'
 //import HelloWorld from '@/components/HelloWorld'
@@ -70,10 +71,10 @@ const router =  new Router({
         path:"/detail/:sku/:tid",
         component:Detail
     },
-    /*{
+    {
         path:"*", //通配符
         redirect:"/home"
-    }*/
+    }
   ]
 })
 export default router;
