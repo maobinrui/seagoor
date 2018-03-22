@@ -74,11 +74,12 @@ a{
 
 }
 .div_content{
-    width:75%;
+    flex:1;
     margin-top:96px;
     margin-left:80px;
     margin-bottom:94px;
     .div_content_ul{
+    width:100%;
         li{
             .background{
                     padding-top: 14px;
@@ -93,14 +94,16 @@ a{
             .flex{
                 display:flex;
                 margin-top: 20px;
-                margin-left: 27px;
+                justify-content:space-around;
                 flex-wrap:wrap;
                 dl{
-                    width:21%;
-                    padding-right: 30px;
+                width:33%;
+
+
                     dt{
                         width: 60px;
                         height: 60px;
+                        margin:0 auto;
                         a{
                             display:block;
                             width:100%;

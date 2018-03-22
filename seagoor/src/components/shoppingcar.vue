@@ -1,31 +1,31 @@
 <template>
   <div class="bg">
-    <header>
+    <header style="background:#fff">
        <p>购物车</p>
     </header>
     <!--空购物车-->
-    <section class="nullcar">
+    <section v-if="!shoppingdata" class="nullcar">
       <img src="/img/cartnull.jpg" />
       <p>购物车空空如也，赶紧去逛逛吧</p>
-      <button>去逛逛</button>
+      <router-link to="/home" tag="button">去逛逛</router-link>
     </section>
     <!--有东西购物车-->
-    <section class="nonullcar">
-        <p class="goods">保税区</p>
-        <div class="goodsdetails">
+    <section class="nonullcar" v-if="shoppingdata" >
+        <p class="goods">{{shoppingdata.channel}}</p>
+        <div class="goodsdetails" v-for="datas in shoppingdata">
           <input type="checkbox" name="" class="choose">
-          <img class="goodspic" src="http://item.qn.seagoor.com/1491461759569.jpg?imageView2/0/w/180" alt="">
-          <span class="mengban">限购：件</span>
+          <img class="goodspic" :src="datas.imgurl" alt="">
+          <span class="mengban">限购：{{datas.limitcount}}件</span>
           <div class="goodsright">
-            <p class="goodstitle">商品标题</p>
+            <p class="goodstitle">{{datas.name}}</p>
             <img src="img/delete.png" >
             <div class="count">
-              <span class="numreduce">-</span>
-              <input class="num" type="text" placeholder="1">
-              <span class="numplus">+</span>
+              <span class="numreduce"  @click="number=number-1<1?1:number-1">-</span>
+              <input class="num" type="text" :placeholder="number">
+              <span class="numplus" @click="number=number+1>3?3:number+1">+</span>
             </div>
 
-            <p class="goodsprice">￥</p>
+            <p class="goodsprice">￥{{datas.price}}</p>
           </div>
         </div>
         <div class="goodsdown">
@@ -35,7 +35,23 @@
             <p>总计&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>￥</span></p>
           </div>
         </div>
+
+        <footer>
+      <div class="total" id="seaGroupMoney" style="background:#fff">
+        <label class="ui-checkbox-s">
+        <input type="checkbox" name="checkbox"  checked="">
+        <span style="font-size: 16px;line-height: 50px;padding-left: 5px;color: #333;">全选</span>
+        </label>
+        <div style="float: right;color: #929292;">
+        <p style="padding-top: 5px;" class="totalMoney">总计：¥529.41</p>
+        <p style="padding-top: 5px;" class="totalFreeMoney">已优惠：¥0.00</p>
+
+        </div>
+        <button>去结算</button>
+      </div>
+    </footer>
     </section>
+
   </div>
 </template>
 
@@ -44,9 +60,24 @@ export default {
   name: 'shoppingcar',
   data () {
     return {
+        number:1,
+        shoppingdatalist:[]
+    }
+  },
+  mounted(){
+    console.log(this.$store.state.shoppingdata);
+    this.shoppingdatalist=this.$store.state.shoppingdata;
+    console.log(this.shoppingdatalist);
+  },
+  computed:{
+
+      shoppingdata(){
+       return this.$store.state.shoppingdata;
+       }
+
+
 
     }
-  }
 }
 </script>
 
@@ -71,7 +102,7 @@ height:100%;
    .nullcar{
     padding-bottom:80%;
     background:#eee;
-    display:none;
+
     img{
       width:27%;
       margin:0 auto;
@@ -219,5 +250,25 @@ height:100%;
     top:77px;
     left:32px
   }
+}
+
+.total{
+  position:fixed;
+  bottom:10px;
+  left:0;
+  width:60%;
+  height:100px;
+
+button{
+    color: #fff!important;
+    padding: 0 10%;
+    position:fixed;
+     bottom:50px;
+     right:0;
+    background: #ee3e54!important;
+    height: 50px;
+    line-height: 50px;
+    border:none
+}
 }
 </style>

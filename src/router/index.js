@@ -12,10 +12,6 @@ import Login from "../components/login";//登录
 
 import Register from "../components/register";//注册
 
-
-
-
-
 import Range1 from "../components/range1";
 import Range2 from "../components/range2";
 
@@ -67,13 +63,14 @@ const router =  new Router({
     },
     {
         name:"detail",
-        path:"/detail/:sku/:tid",
+        path:"/detail/:id",
         component:Detail
+        //
     },
-    /*{
+    {
         path:"*", //通配符
         redirect:"/home"
-    }*/
+    }
   ]
 })
 export default router;

@@ -60,12 +60,12 @@
       <ul>
         <li class="item-shopcar ui-badge-wrap" style="border-left:none;">
           <div class="imgbox">
-            <a href="cart.html"> 购物车
+            <router-link to="/shoppingcar" tag="a"> 购物车
               <div class="ui-badge">0</div>
-            </a>
+            </router-link>
           </div>
         </li>
-        <li class="item-addshop"><a class="item-addshop-text">加入购物车</a></li>
+        <li class="item-addshop" @click="handelclick"><a class="item-addshop-text">加入购物车</a></li>
         <li class="item-buy"><a class="item-buy-text">立即购买</a></li>
         <li class="item-none" style="display: none">已抢光</li>
       </ul>
@@ -79,6 +79,7 @@ import axios from "axios"
 import { Swipe, SwipeItem } from 'vue-swipe';
 require('vue-swipe/dist/vue-swipe.css');
 import { Indicator } from 'mint-ui';
+import router from "../router";
 export default {
   name: 'detail',
   data () {
@@ -86,18 +87,28 @@ export default {
         swipeurl:[],
         datas:[],
         imgList:[],
+        shopdata:[]
     }
   },
 
     mounted(){
-            axios.get("product/detail.htm?sku=02061101580101&tid=1953&shopmobile=null&oem=IOS&scheme=http&osversion=1.1.0&screenwidth=375&screenheight=667&apptype=wap&appversion=1.5.0&nettype=unknown&regcode=250&provcode=264&partner=xigou").then(res=>{
+            console.log(this.$route.params);
+            axios.get(`product/detail.htm?sku=${this.$route.params.sku}&tid=${this.$route.params.tid}&shopmobile=null&oem=IOS&scheme=http&osversion=1.1.0&screenwidth=375&screenheight=667&apptype=wap&appversion=1.5.0&nettype=unknown&regcode=250&provcode=264&partner=xigou`).then(res=>{
 
                 this.swipeurl=res.data.data.imglist;
                 this.datas = res.data.data;
                 this.imgList = res.data.data.detail;
-                var arr = this.imgList.split("src=")
+                var arr = this.imgList.split("src=");
+                this.shopdata=res.data
+                console.log(this.shopdata );
+
             }).catch(error=>{
             })
+},
+methods:{
+  handelclick(){
+    this.$store.commit("shoppingMutation",this.shopdata )
+  }
 },
 components:{
             'swipe':Swipe,
@@ -353,7 +364,7 @@ footer{
     bottom: 0;
     left: 0;
     background-color: #f9f9f9;
-    z-index: 100;
+    z-index: 200;
     font-size: 12px;
     height: 51px;
     ul{

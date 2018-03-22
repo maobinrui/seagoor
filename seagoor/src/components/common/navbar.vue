@@ -44,6 +44,7 @@ export default {
 <style lang="scss" scoped>
   ul{
     height: 50px;
+    z-index:100;
     background-color: #f9f9f9;
     background: url(/img/newYear_bottom.png) no-repeat center bottom;
     background-size: 100% 50px;

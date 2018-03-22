@@ -80,10 +80,10 @@
       <div  v-for="data in mores">
         <img class="pic" :src="data.imgurl" >
         <ul class="list">
-              <li v-for="datas in data.itemlist">
-                <a href="">
+              <li v-for="datas in data.itemlist" @click="handleClick(datas.sku,datas.tid)" :key="datas.sku">
+
                   <img :src="datas.imgurl" alt="" />
-                </a>
+
                 <p>{{datas.name}}</p>
                 <span class="smallsize-font">￥{{datas.price}}</span><del class="smallsize-font">￥{{datas.oldprice}}</del>
               </li>
@@ -99,6 +99,7 @@ import axios from "axios"
 import { Swipe, SwipeItem } from 'vue-swipe';
 require('vue-swipe/dist/vue-swipe.css');
 import { Indicator } from 'mint-ui';
+import router from "../router";
 
 
 
@@ -125,6 +126,7 @@ export default {
 
     }
   },
+
 
 
   mounted(){
@@ -166,12 +168,23 @@ export default {
                 this.pic=res.data.data.list[0].imgurl;
                 this.datalist=res.data.data.list[0].itemlist;
                 this.mores=res.data.data.list;
-                console.log(this.more);
+                console.log(this.mores);
                 }).catch(error=>{
                 })
 
 
 },
+ methods:{
+      handleClick(sku,tid){
+
+          console.log(sku);
+        router.push(`/detail/${sku}/${tid}`);
+        //tid=1957&sku=02011200290101
+        //console.log(sku);
+
+
+      }
+    },
 
 components:{
             'swipe':Swipe,
