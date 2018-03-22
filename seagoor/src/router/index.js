@@ -11,6 +11,8 @@ import Login from "../components/login";//登录
 import Register from "../components/register";//注册
 
 
+
+
 Vue.use(Router)
 
 const router =  new Router({

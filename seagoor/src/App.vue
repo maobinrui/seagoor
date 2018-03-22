@@ -1,13 +1,26 @@
 <template>
   <div>
     <router-view/>
+
+    <navbar></navbar>
   </div>
 </template>
 
 <script>
-import sidebar from "./components/common/navbar"
+import navbar from "./components/common/navbar"
+
+
 export default {
-  name: 'App'
+  name: 'App',
+  data(){
+    return {
+
+    }
+  },
+   components:{
+    navbar,
+
+  }
 }
 </script>
 
@@ -18,5 +31,9 @@ export default {
 }
 ul{
     list-style:none;
+}
+body,html{
+    width:100%;
+    height:100%;
 }
 </style>
