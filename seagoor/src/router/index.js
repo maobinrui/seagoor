@@ -64,6 +64,7 @@ const router =  new Router({
         name:"detail",
         path:"/detail/:id",
         component:Detail
+        //
     },
     {
         path:"*", //通配符

@@ -67,11 +67,12 @@ display:flex;
                 margin-left:5px;
                 flex-wrap:wrap;
                 dl{
-                    width:22%;
+                    width:25%;
                     height:98px;
-                    margin-right: 11px;
+
                     dt{
                     position:relative;
+                    margin-right: 11px;
                         /* margin-bottom: 23px; */
                         img{
                             display: block;
@@ -96,7 +97,7 @@ display:flex;
                     bottom:0;
                     z-index:1;
                     background: url(/img/classify/line-brands.png) no-repeat;
-                    background-position:0px 98px;
+                    background-position:0px 66px;
                 }
                 .div_brands_child_item_name {
                     font-size: 10px;
