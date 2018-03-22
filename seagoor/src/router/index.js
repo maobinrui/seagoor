@@ -59,8 +59,7 @@ const router =  new Router({
     },
     {
         name:"detail",
-        path:"/detail",
-        // /:id
+        path:"/detail/:id",
         component:Detail
     },
     {
