@@ -8,10 +8,16 @@ import Detail from "../components/detail";//注册
 import Shoppingcar from "../components/shoppingcar";//购物车
 import Personal from "../components/personal";//个人中心
 import Login from "../components/login";//登录
+
 import Register from "../components/register";//注册
 
 
 
+
+
+import Register from "../components/register";
+import Range1 from "../components/range1";
+import Range2 from "../components/range2";
 
 Vue.use(Router)
 
@@ -27,6 +33,21 @@ const router =  new Router({
     {
         path:"/range",
         component:Range,
+        children:[
+            {
+                path:"range1",
+                component:Range1
+            },
+            {
+                path:"range2",
+                component:Range2
+            },
+            {
+                path:"/", //通配符
+                redirect:"/range/range1"
+
+            }
+        ]
     },
     {
         path:"/shoppingcar",
