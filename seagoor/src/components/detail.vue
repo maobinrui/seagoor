@@ -93,8 +93,7 @@ export default {
 
     mounted(){
             console.log(this.$route.params);
-            axios.get(`product/detail.htm?sku=${this.$route.params.sku}&tid=${this.$route.params.tid}&shopmobile=null&oem=IOS&scheme=http&osversion=1.1.0&screenwidth=375&screenheight=667&apptype=wap&appversion=1.5.0&nettype=unknown&regcode=250&provcode=264&partner=xigou`).then(res=>{
-
+            axios.get(`product/detail.htm?sku=${this.$route.params.sku}&tid=${this.$route.params.tid}&shopmobile=null&oem=IOS&scheme=http&osversion=1.1.0&screenwidth=375&screenheight=667&apptype=wap&appversion=1.5.0&nettype=unknown&regcode=250&provcode=264&partner=xigou`).then(res=>{k
                 this.swipeurl=res.data.data.imglist;
                 this.datas = res.data.data;
                 this.imgList = res.data.data.detail;

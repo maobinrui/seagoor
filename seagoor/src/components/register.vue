@@ -8,14 +8,14 @@
         <div class="input_info">
           <div class="div_tel_icon"></div>
           <div class="div_input_box">
-                <input class="name" id="name" type="text" placeholder="请输入手机号" xigou-validata-methods="required&amp;emailormobile" xigou-validata-errors="请输入用户账号&amp;请填写正确的手机号或者邮箱地址" xigou-validata-enable="true">
+                <input class="name" id="name" type="text" placeholder="请输入手机号" xigou-validata-methods="required&amp;emailormobile" xigou-validata-errors="请输入用户账号&amp;请填写正确的手机号或者邮箱地址" xigou-validata-enable="true" v-model="username">
           <div class="div_clear_input1"></div>
           </div>
         </div>
         <div class="input_info">
           <div class="div_psw_icon"></div>
           <div class="div_input_box">
-              <input class="pwd" id="pwd" type="password" placeholder="请输入密码">
+              <input class="pwd" id="pwd" type="password" placeholder="请输入密码" v-model="password">
               <div class="div_clear_input2"></div>
           </div>
         </div>
@@ -26,19 +26,70 @@
     </div>
 
     <div class="login-login">
-        <div class="loginBtnClass" id="loginBtnID"><span>{{name}}</span></div>
+        <div class="loginBtnClass" id="loginBtnID" @click="handleClick">{{name}}</div>
     </div>
 
   </div>
 </template>
 
 <script>
+import axios from "axios"
 export default {
-  name: 'HelloWorld',
+  name: 'register',
+  computed:{
+  name(){
+  return this.$route.params.conName
+  }
+  },
   data () {
     return {
-      // msg: 'Welcome to Your Vue.js App'
+      username:'',
+      password:'',
     }
+  },
+  methods:{
+  handleClick(){
+  console.log(this.name)
+    if(this.name==="登录"){
+      var that = this;
+      axios.post('/api/login/getAccount', {
+        username: that.username,
+        password: that.password
+        }).then(function(res) {
+        console.log(res)
+          if(res.data.code===1) {
+              //that.$store.dispatch('setUser', that.user);
+              //localStorage.setItem('user', that.user);
+              that.$router.push({name: 'home'});
+            }else{
+            console.log(res.data.message);
+            }
+            }).catch(function(err) {
+                console.log(err);
+            })
+    }else if(this.name==="注册"){
+      var that = this;
+      console.log(that.username);
+      console.log(that.password)
+      axios.post('/api/login/createAccount', {
+      username: that.username,
+      password: that.password
+        }).then(function (res) {
+        console.log(res)
+            if(res.data.code===1) {
+                location.href = '/#/register';
+            } else {
+                if(res.data.code === -99) {
+                console.log(res.data.message);
+                }
+            }
+          }).catch(function (error) {
+            console.log(error);
+          });
+    }
+  }
+  },
+  mounted(){
   }
 }
 </script>

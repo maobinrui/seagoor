@@ -8,10 +8,10 @@
     </div>
     <div class="logBottom">
         <div class="div_login">
-          <router-link  to="/register" tag="a" @click="loginclick('登录')" >手机登录</router-link>
+          <router-link :to="{ name: 'register', params: { conName: '登录' }}">手机登录</router-link>
         </div>
         <div class="div_register">
-          <router-link  to="/register" tag="a" @click="loginclick('注册')" >手机注册</router-link> <!--  -->
+          <router-link :to="{ name: 'register', params: { conName: '注册' }}">手机注册</router-link>
         </div>
     </div>
   </div>
@@ -26,10 +26,8 @@ export default {
       // msg: 'Welcome to Your Vue.js App'
     }
   },
+  //router.push(`/register/${name}`);
   methods:{
-    loginclick(name){
-        router.oush(`/register/${name}`);
-    }
   }
 }
 </script>

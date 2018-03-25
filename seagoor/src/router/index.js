@@ -28,7 +28,7 @@ const router =  new Router({
   routes: [
     {
         path:"/home",
-
+        name:'home',
         component:Home
     },
     {
@@ -63,6 +63,7 @@ const router =  new Router({
         component:Login
     },
     {
+        name:'register',
         path:"/register",
         component:Register
     },
@@ -71,10 +72,10 @@ const router =  new Router({
         path:"/detail/:sku/:tid",
         component:Detail
     },
-    {
-        path:"*", //通配符
-        redirect:"/home"
-    }
+    // {
+    //     path:"*", //通配符
+    //     redirect:"/home"
+    // }
   ]
 })
 export default router;
